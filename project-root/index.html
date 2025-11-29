@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GenAI • Terminal — Home</title>
+
+    <!-- Fonts & Bootstrap (CDN) -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- decorative background -->
+    <div id="bgGrid" class="bgGrid" aria-hidden="true"></div>
+
+    <!-- NAVBAR (Bootstrap structure, custom styling via CSS) -->
+    <nav class="navbar navbar-expand-lg topNav" role="navigation">
+        <div class="container">
+            <a class="navbar-brand brandWrap" href="index.html">
+                <span class="brandDot" aria-hidden="true"></span>
+                <span class="brandName">GenAI<span class="brandGlyph">╫</span>Terminal</span>
+            </a>
+
+            <button class="navbar-toggler navToggleBtn" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navMain">
+                <ul class="navbar-nav msAuto navList">
+                    <li class="nav-item"><a class="nav-link navLink" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link navLink" href="ethics.html">Ethics</a></li>
+                    <li class="nav-item"><a class="nav-link navLink" href="article.html">Analogy</a></li>
+                    <li class="nav-item themeToggleWrap">
+                        <button class="themeToggleButton controlBtn" title="Toggle theme" aria-label="Toggle theme"><i
+                                class="fa-solid fa-sun"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="home">
+        <header class="heroSection container">
+            <div class="heroRow row alignCenter">
+                <div class="colLeft col-lg-6">
+                    <h1 class="heroTitle">Generative AI — <span class="accentText">Terminal</span></h1>
+                    <p class="heroLead">Explore how AI works, its ethical use, and best practices for integrating it
+                        into your work. Learn about responsible AI usage, what AI is, and how to use it effectively.</p>
+
+                    <div class="heroCtaGroup">
+                        <a href="faq.html" class="btnPrimary"><i class="fa-solid fa-question"></i> Explore FAQs</a>
+                        <a href="ethics.html" class="btnGhost"><i class="fa-solid fa-balance-scale"></i> Ethics
+                            Guide</a>
+                        <a href="article.html" class="btnMicro">Analogy</a>
+                    </div>
+
+                    <div class="heroTip">Tip: AI is a tool, but your judgment shapes its impact.</div>
+                </div>
+
+                <div class="colRight col-lg-6">
+                    <div class="terminalCard">
+                        <div class="terminalHeader"><span class="tLabel">• terminal</span>
+                            <div class="hdrIcons"><i></i><i></i><i></i></div>
+                        </div>
+                        <pre id="terminalOutput" class="terminalOutput">> welcome — genai-terminal v2.0
+> theme: hybrid (cyan + lime)
+> run demo → shows heavy-mode effects
+</pre>
+                        <div class="terminalActions">
+                            <button id="runDemoBtn" class="btnMicroGhost">Run Demo</button>
+                            <button id="openFaqBtn" class="btnMicro">Open FAQ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- FEATURES -->
+        <section class="featuresSection container">
+            <div class="featuresRow row">
+                <div class="featureCol col-md-4">
+                    <article class="cardNeo">
+                        <div class="cardIcon"><i class="fa-solid fa-robot"></i></div>
+                        <h4 class="cardTitle">Interactive Assist</h4>
+                        <p class="cardText">Save prompts, copy explanations, and experiment with prompts locally.
+                            Simulated
+                            AI replies — can be wired later.</p>
+                    </article>
+                </div>
+
+                <div class="featureCol col-md-4">
+                    <article class="cardNeo">
+                        <div class="cardIcon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h4 class="cardTitle">Ethical Checklist</h4>
+                        <p class="cardText">Downloadable checklist, quick quiz, and clear steps to avoid plagiarism and
+                            bias
+                            in academic use.</p>
+                    </article>
+                </div>
+
+                <div class="featureCol col-md-4">
+                    <article class="cardNeo">
+                        <div class="cardIcon"><i class="fa-solid fa-book"></i></div>
+                        <h4 class="cardTitle">Searchable FAQ</h4>
+                        <p class="cardText">Fast searching, copy-to-clipboard, and prompt examples for study or
+                            assignment
+                            prep.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap JS (CDN) and script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

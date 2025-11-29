@@ -1,0 +1,915 @@
+/* assets/css/style.css
+   Dark Futuristic Terminal — Hybrid Cyan + Lime (heavy animations)
+   Custom variables are camelCased (user request). Bootstrap variables are not touched.
+*/
+
+/* ---------- VARIABLES (camelCased) ---------- */
+:root {
+    --bgBase: #071014;
+    --panelBase: rgba(255, 255, 255, 0.02);
+    --mutedColor: #9fb3c5;
+    --accentCyan: #00eaff;
+    --accentLime: #8bff3f;
+    --accentGradient: linear-gradient(90deg, var(--accentCyan), var(--accentLime));
+    --glassBorder: rgba(255, 255, 255, 0.04);
+    --cardRadius: 12px;
+    --heavyGlow: 0 0 30px rgba(0, 234, 255, 0.14), 0 0 80px rgba(139, 255, 63, 0.06);
+    --transitionFast: 160ms;
+    --transitionMed: 300ms;
+}
+
+/* LIGHT MODE OVERRIDES (applied by JS toggling .lightMode on <html>) */
+html.lightMode {
+    --bgBase: #f4fafb;
+    --panelBase: rgba(2, 6, 12, 0.02);
+    --mutedColor: #27414b;
+    --accentCyan: #008ea8;
+    --accentLime: #59a21a;
+    --accentGradient: linear-gradient(90deg, var(--accentCyan), var(--accentLime));
+    --glassBorder: rgba(2, 6, 12, 0.04);
+}
+
+/* ---------- BASE LAYOUT ---------- */
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(900px 350px at 10% 10%, rgba(0, 0, 0, 0.35), transparent), var(--bgBase);
+    color: #e7f6f9;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* background grid */
+.bgGrid {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(transparent 92%, rgba(255, 255, 255, 0.01) 92%),
+        linear-gradient(90deg, transparent 92%, rgba(255, 255, 255, 0.01) 92%);
+    background-size: 160px 160px, 160px 160px;
+    opacity: 0.55;
+    filter: blur(6px);
+}
+
+/* ---------- NAV ---------- */
+.topNav {
+    position: relative;
+    z-index: 30;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+    border-bottom: 1px solid var(--glassBorder);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 30px rgb(0, 44, 48), 0 0 80px rgb(10, 40, 1);
+    padding: 18px 0;
+}
+
+/* ensure nav stretches full width and items spread properly */
+.topNav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* stretch nav items but keep theme toggle far right */
+.navList {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: auto;
+}
+
+/* ensure brand stays left, nav stays right */
+.navbar-brand {
+    margin-right: auto;
+}
+
+.brandWrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none
+}
+
+.brandDot {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    background: var(--accentCyan);
+    box-shadow: var(--heavyGlow);
+}
+
+.brandName {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #dffcff
+}
+
+.brandGlyph {
+    color: var(--accentLime);
+    margin-left: 6px
+}
+
+/* nav list layout helpers (avoid bootstrap utility classes) */
+.navList {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto
+}
+
+.navLink {
+    color: var(--mutedColor);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all var(--transitionFast) ease;
+}
+
+.navLink:hover,
+.navLink.active {
+    color: var(--mutedColor) !important;
+    box-shadow: 0 6px 28px rgba(0, 234, 255, 0.432);
+    transform: translateY(-2px);
+}
+
+/* control btn */
+.controlBtn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    color: inherit;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.controlBtn:hover {
+    box-shadow: var(--heavyGlow);
+    transform: translateY(-3px);
+}
+
+/* ---------- HERO (custom spacing, no bootstrap utilities) ---------- */
+.heroSection {
+    position: relative;
+    z-index: 5;
+    padding: 95px 0 76px;
+    margin-top: 30px;
+
+}
+
+.row {
+    flex-wrap: unset;
+}
+
+.heroRow {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.colLeft {
+    padding-right: 85px;
+}
+
+.colRight {
+    text-align: left;
+}
+
+.source {
+    font-size: 12px;
+    color: #ffffff75;
+    font-style: italic;
+}
+
+/* hero text */
+.heroTitle {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 36px;
+    margin: 0 0 12px;
+    letter-spacing: 0.02em
+}
+
+.accentText {
+    background: var(--accentGradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent
+}
+
+.heroLead {
+    color: var(--mutedColor);
+    margin: 0 0 18px;
+    font-size: 16px
+}
+
+/* CTA group */
+.heroCtaGroup {
+    display: flex;
+    gap: 12px;
+    margin-top: 40px;
+    flex-wrap: wrap
+}
+
+.btnPrimary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accentGradient);
+    color: #001219;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: var(--heavyGlow);
+    transition: transform var(--transitionFast) ease;
+}
+
+.btnPrimary:hover {
+    transform: translateY(-6px) scale(1.02);
+}
+
+.btnGhost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transitionFast) ease;
+}
+
+.btnGhost:hover {
+    box-shadow: 0 10px 40px rgba(139, 255, 63, 0.04);
+    transform: translateY(-4px);
+    text-decoration: none;
+}
+
+.btnMicro {
+    padding: 10px 10px;
+    border-radius: 8px;
+    background: transparent;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    color: var(--mutedColor);
+    justify-content: center;
+    align-content: center;
+}
+
+/* hero tip */
+.heroTip {
+    margin-top: 14px;
+    color: var(--mutedColor);
+    font-size: 13px
+}
+
+/* ---------- TERMINAL CARD ---------- */
+.terminalCard {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(255, 255, 255, 0.01));
+    border: 1px solid var(--glassBorder);
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: var(--heavyGlow);
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.terminalHeader {
+    display: flex;
+    justify-content: space-between;
+    color: var(--mutedColor);
+    font-family: 'Share Tech Mono';
+    font-size: 13px;
+    margin-bottom: 8px
+}
+
+.terminalOutput {
+    background: transparent;
+    color: var(--accentCyan);
+    font-family: 'Share Tech Mono';
+    margin: 0;
+    white-space: pre-wrap;
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 96px;
+}
+
+/* terminal buttons */
+.terminalActions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 8px
+}
+
+.btnMicroGhost {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: transparent;
+    color: var(--mutedColor)
+}
+
+.btnMicro {
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: var(--accentGradient);
+    color: #021317;
+    border: none
+}
+
+/* ---------- FEATURES / CARDS ---------- */
+.featuresSection {
+    padding: 40px 0;
+}
+
+.featuresRow {
+    display: flex;
+    gap: 18px
+}
+
+.featureCol {
+    display: flex
+}
+
+.cardNeo {
+    flex: 1;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: var(--cardRadius);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.01));
+    border: 1px solid var(--glassBorder);
+    transition: transform var(--transitionMed) ease, box-shadow var(--transitionMed) ease;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.cardNeo:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 80px rgba(0, 0, 0, 0.6);
+}
+
+.cardIcon {
+    font-size: 22px;
+    color: var(--accentCyan);
+    margin-bottom: 10px
+}
+
+.cardTitle {
+    margin: 0 0 8px
+}
+
+.cardText {
+    color: var(--mutedColor);
+    font-size: 14px
+}
+
+/* ---------- CONTENT / FAQ / ASIDE ---------- */
+.contentMain {
+    padding: 42px 0
+}
+
+.contentRow {
+    display: flex;
+    gap: 20px
+}
+
+.colMain {
+    flex: 1;
+}
+
+.colAside {
+    width: 320px
+}
+
+/* search bar */
+.searchBarRow {
+    display: flex;
+    gap: 10px;
+    margin: 18px 0;
+}
+
+.faqSearchBar {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: var(--panelBase);
+    border: 1px solid var(--glassBorder);
+    color: inherit
+}
+
+.btnSmall {
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.btnOutline {
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: transparent;
+    color: inherit
+}
+
+/* FAQ accordion (custom) */
+.accordionList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.faqItem {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.02)
+}
+
+.faqQuestion {
+    width: 100%;
+    text-align: left;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.01), transparent);
+    color: var(--mutedColor);
+    padding: 12px 16px;
+    border: none;
+    font-family: 'Share Tech Mono';
+    font-size: 15px;
+    cursor: pointer
+}
+
+.faqAnswer {
+    padding: 12px 16px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), transparent);
+    color: var(--mutedColor);
+    display: none
+}
+
+.faqAnswer.open {
+    display: block
+}
+
+.faqActions {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px
+}
+
+.copyBtn,
+.visitBtn {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer
+}
+
+.copyBtn {
+    background: var(--accentGradient);
+    color: #001219
+}
+
+.visitBtn {
+    background: transparent;
+    color: var(--mutedColor);
+    border: 1px solid rgba(255, 255, 255, 0.04)
+}
+
+.ethActions {
+    margin-top: 30px;
+}
+
+.ethicSentence {
+    margin-bottom: 0;
+}
+
+#ethicsSource {
+    margin-bottom: 1em;
+}
+
+.ethicsQuestion {
+    text-decoration: unset;
+    color: var(--accentLime);
+    font-style: italic;
+}
+
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+/* aside */
+.asideCard {
+    padding: 16px
+}
+
+.savedPrompts {
+    min-height: 68px;
+}
+
+/* ---------- QUIZ / ETHICS ---------- */
+.ethCard h4 {
+    margin-top: 0
+}
+
+.gridBtns {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px
+}
+
+.quizBtn {
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: transparent;
+    color: #e7f6f9;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    cursor: pointer
+}
+
+.quizBtn:hover {
+    color: var(--mutedColor) !important;
+    box-shadow: 0 6px 28px rgba(0, 234, 255, 0.801);
+    transform: translateY(-4px);
+    color: #001219;
+}
+
+/* ---------- ARTICLE ---------- */
+.articleCard {
+    padding: 18px
+}
+
+/* ---------- HEAVY ANIMATIONS: glitch & neon pulses ---------- */
+@keyframes neonPulse {
+    0% {
+        filter: drop-shadow(0 0 8px rgba(0, 234, 255, 0.08));
+        transform: translateY(0)
+    }
+
+    50% {
+        filter: drop-shadow(0 0 28px rgba(139, 255, 63, 0.12));
+        transform: translateY(-6px)
+    }
+
+    100% {
+        filter: drop-shadow(0 0 8px rgba(0, 234, 255, 0.08));
+        transform: translateY(0)
+    }
+}
+
+.brandDot,
+.cardIcon,
+.btnPrimary {
+    animation: neonPulse 3.2s ease-in-out infinite;
+}
+
+@keyframes glitchX {
+    0% {
+        transform: translateX(0);
+        opacity: 1
+    }
+
+    20% {
+        transform: translateX(-3px);
+        opacity: .9
+    }
+
+    40% {
+        transform: translateX(3px);
+        opacity: .95
+    }
+
+    60% {
+        transform: translateX(-2px);
+        opacity: .9
+    }
+
+    80% {
+        transform: translateX(2px);
+        opacity: .95
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1
+    }
+}
+
+.pageTitle,
+.pageLead {
+    max-width: 100%;
+    text-align: center;
+}
+
+.contentMain .pageTitle {
+    text-align: center;
+}
+
+.contentMain .pageLead {
+    text-align: center;
+}
+
+.heroTitle {
+    display: inline-block
+}
+
+.heroTitle.activeGlitch {
+    animation: glitchX 1.2s linear infinite;
+}
+
+/* ---------- ANALOGY INTERACTIVE ---------- */
+.analogyCard {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.progressWrapper {
+    margin-bottom: 24px;
+}
+
+.progressInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.progressLabel {
+    font-size: 13px;
+    color: var(--mutedColor);
+}
+
+.progressPercent {
+    font-size: 13px;
+    color: var(--accentCyan);
+}
+
+.progressBarWrapper {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progressBarFill {
+    height: 100%;
+    background: var(--accentGradient);
+    transition: width 300ms ease;
+}
+
+.questionTitle {
+    margin-bottom: 20px;
+}
+
+.optionsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Choice Options */
+.choiceOption {
+    width: 100%;
+    padding: 12px 16px;
+    text-align: left;
+    background: transparent;
+    border: 1px solid var(--glassBorder);
+    border-radius: 8px;
+    color: var(--mutedColor);
+    cursor: pointer;
+    transition: all 160ms ease;
+}
+
+.choiceOption:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.choiceOption.selected {
+    background: rgba(0, 234, 255, 0.08);
+    border-color: var(--accentCyan);
+}
+
+/* Multiple Options */
+.multipleOption {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border: 1px solid var(--glassBorder);
+    border-radius: 8px;
+    cursor: pointer;
+    background: transparent;
+    transition: all 160ms ease;
+}
+
+.multipleOption:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.multipleOption.selected {
+    background: rgba(0, 234, 255, 0.04);
+}
+
+.multipleOption input[type="checkbox"] {
+    accent-color: var(--accentCyan);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.multipleOption span {
+    font-size: 14px;
+    color: var(--mutedColor);
+}
+
+/* Ranking Options */
+.rankingHint {
+    font-size: 13px;
+    color: var(--mutedColor);
+    margin-bottom: 8px;
+}
+
+.rankingOption {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--glassBorder);
+    border-radius: 8px;
+    background: var(--panelBase);
+    cursor: grab;
+    transition: all 160ms ease;
+}
+
+.rankingOption:active {
+    cursor: grabbing;
+}
+
+.rankingOption.dragging {
+    opacity: 0.5;
+}
+
+.rankNumber {
+    min-width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accentGradient);
+    color: #001219;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.rankText {
+    font-size: 14px;
+    color: var(--mutedColor);
+}
+
+/* Navigation */
+.navigationButtons {
+    display: flex;
+    gap: 10px;
+}
+
+.btnContinue {
+    flex: 1;
+}
+
+/* Results */
+.answerSummary {
+    margin-bottom: 20px;
+    padding: 14px;
+    background: var(--panelBase);
+    border-radius: 8px;
+    border: 1px solid var(--glassBorder);
+}
+
+.answerSummary p {
+    margin: 0 0 8px 0;
+    color: var(--mutedColor);
+    font-size: 14px;
+}
+
+.answerSummary p:last-child {
+    margin-bottom: 0;
+}
+
+.successNote {
+    padding: 12px;
+    background: rgba(139, 255, 63, 0.06);
+    border: 1px solid rgba(139, 255, 63, 0.2);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.successNote p {
+    margin: 0;
+    color: var(--accentLime);
+    font-size: 14px;
+}
+
+.analogyHeader {
+    margin-top: 32px;
+}
+
+.analogyComparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.comparisonCard {
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid;
+}
+
+.cyanCard {
+    background: rgba(0, 234, 255, 0.04);
+    border-color: rgba(0, 234, 255, 0.1);
+}
+
+.limeCard {
+    background: rgba(139, 255, 63, 0.04);
+    border-color: rgba(139, 255, 63, 0.1);
+}
+
+.comparisonTitle {
+    margin: 0 0 10px 0;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.cyanCard .comparisonTitle {
+    color: var(--accentCyan);
+}
+
+.limeCard .comparisonTitle {
+    color: var(--accentLime);
+}
+
+.comparisonCard ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13px;
+    color: var(--mutedColor);
+}
+
+.sameQuestions {
+    padding: 16px;
+    background: var(--panelBase);
+    border-radius: 8px;
+    border: 1px solid var(--glassBorder);
+    margin-bottom: 20px;
+}
+
+.sameQuestionsTitle {
+    margin: 0 0 12px 0;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.sameQuestions ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 14px;
+    color: var(--mutedColor);
+    line-height: 1.7;
+}
+
+.webDevThought {
+    font-style: italic;
+    color: var(--mutedColor);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.highlightCyan {
+    color: var(--accentCyan);
+}
+
+.highlightMuted {
+    color: var(--mutedColor);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .analogyComparison {
+        grid-template-columns: 1fr;
+    }
+}
