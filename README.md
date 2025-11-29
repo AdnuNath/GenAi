@@ -18,7 +18,7 @@ Built with HTML, CSS and JavaScript — no heavy frameworks, just pure interacti
    ```sh
    git clone https://github.com/AdnuNath/GenAi.git
    cd GenAi
-2. Visit:
+2. Visit: https://genaipre.netlify.app/
 
 ## Screeshots
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f4a9e243-2590-486d-9906-140e890a6dd2" />
