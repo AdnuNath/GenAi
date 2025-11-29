@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0a5fbbdb-604d-4aea-8b92-ee8ca9d3d587" /># GenAI Terminal 🌌
+# GenAI Terminal 🌌
 
 **Generative-AI Student Guide & Interactive Terminal Experience**  
 
